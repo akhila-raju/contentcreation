@@ -6,8 +6,8 @@ def newParticipant(number):
    		os.makedirs('Participant' + number) # make folder for participant
 
 		print('Creating text files...') # create files in participant folder
-		experiments = ['Potentiometer']
-		for item in experiments: #record values for each file
+		actuators = ['Potentiometer']
+		for item in actuators: #record values for each file
 			fileName = open(os.path.join('Participant' + number, item + '.csv'), 'w')
 			runExperiment(fileName, item)
 	else:
