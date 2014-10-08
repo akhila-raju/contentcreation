@@ -8,7 +8,7 @@ def newParticipant(number):
 		print('Creating text files') # create files in participant folder
 		experiments = ['potentiometer']
 		for item in experiments: #record values for each file
-			file = open(item + '.csv', 'w')
+			file = open(os.path.join('Participant' + number, item + '.csv'), 'w')
 	else:
 		print('Participant folder already exists.')
 
