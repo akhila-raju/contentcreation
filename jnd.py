@@ -26,7 +26,7 @@ def runExperiment(fileName, experimentName):
 		# how do you know when the experiment has ended?
 	done = time.time()
 	timeElapsed = done - start
-	fileName.write('End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
-	fileName.write('Time: ' + str(timeElapsed) + ' s')
+	fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
+	fileName.write('\n Time: ' + str(timeElapsed) + ' s')
 
 newParticipant(raw_input('Enter Participant Number: '))
