@@ -44,9 +44,9 @@ def runExperiment(fileName, actuatorName, experimentName, participantNumber):
 
 def visualize(folder):
 	#go into each participant folder and create a visualization for an experiment of an actuator
-	# perform linear regression
-	# visualize by exporting csv to tableau
-	# look into vispy
+	# perform logistic regression
+	# visualize by exporting json to D3
+	# look into vispy and psychopy
 
 newActuator(raw_input('Enter Actuator Name: ')) # running per actuator, not participant
 
@@ -55,5 +55,4 @@ newActuator(raw_input('Enter Actuator Name: ')) # running per actuator, not part
 # -r "actuator name" "id"
 # - participant
 # fit on power law curve; 2 values = a, k
-# visualization - Python's graphing software, export to Tableau
 # export it to JSON or CSV
