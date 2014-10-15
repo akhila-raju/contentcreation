@@ -29,4 +29,12 @@ def runExperiment(fileName, experimentName):
 	fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
 	fileName.write('\n Time: ' + str(timeElapsed) + ' s')
 
-newParticipant(raw_input('Enter Participant Number: '))
+newParticipant(raw_input('Enter Actuator Name: ')) # running per actuator, not participant
+
+# add command args
+# -ls outputs all of the actuator names that we have on file
+# -r "actuator name" "id"
+# - participant
+# fit on power law curve; 2 values = a, k
+# visualization - Python's graphing software, export to Tableau
+# export it to JSON or CSV
