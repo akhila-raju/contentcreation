@@ -1,4 +1,4 @@
-import os, sys, time, datetime
+import os, sys, time, datetime, json
 
 # def newParticipant(number):
 # 	if not os.path.exists('Participant' + number):
@@ -13,22 +13,21 @@ import os, sys, time, datetime
 # 	else:
 # 		print('Participant folder already exists.')
 
-def newActuator(actuatorName, data): #takes in json
+def newActuator(actuatorName, participantNumber):
 	if not os.path.exists(actuatorName):
 		print('Creating new folder for ' + actuatorName + '...')
 		os.makedirs(actuatorName) # make folder for actuator
-
-		print('Creating participant folders...') # create participant folders within actuator folder
-		participants = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-		experiments = [[light, dark]]
-		for item in participants: #record values for each participant
-			os.makedirs('Participant ' + participants[item]) # creates participant folders
-			fileName = open(os.path.join(actuatorName, item + '.csv'), 'w')
-			runExperiment(fileName, actuatorName, experiments[item], item)
-
+	print('Creating participant folder...') # create participant subfolder within actuator folder, CSV
+	experiments = [["light", "dark"]]
+	participant = 'Participant'
+	participant += str(participantNumber)
+	participantFolder = actuatorName + '/' + participant + '/'
+	os.makedirs(participantFolder)
+	fileName = open(os.path.join(participantFolder, participantNumber + '.csv'), 'w')
+	runExperiment(fileName, actuatorName, experiments[item], item)
 
 def runExperiment(fileName, actuatorName, experimentName, participantNumber):
-	print('Running ' + actuatorName + ' ' + sexperimentName + ' Experiment for Participant ' + participantNumber + ' ...')
+	print('Running ' + actuatorName + ' ' + experimentName + ' Experiment for Participant ' + participantNumber + ' ...')
 	fileName.write('Start: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
 	start = time.time()
 	#if (fileName == 'potentiometer'):
@@ -42,14 +41,36 @@ def runExperiment(fileName, actuatorName, experimentName, participantNumber):
 	fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
 	fileName.write('\n Time: ' + str(timeElapsed) + ' s')
 
-def visualize(folder):
+def exportJson(path):
+	f = open(path, 'r')
+	arr = []
+	headers = []
+	for header in f.readline().split(','):
+		headers.append(header)
+
+	for line in f.readlines():
+		lineItems = {}
+		for i,item in enumerate(line.split(',')):
+			lineItems[headers[i]] = item
+		arr.append(lineitems)
+
+	f.close()
+
+	jsonText = json.dumps(arr)
+
+	#return visualize(jsonText)
+
+#def visualize(jsonText):
 	#go into each participant folder and create a visualization for an experiment of an actuator
 	# perform logistic regression
 	# visualize by exporting json to D3
 	# look into vispy and psychopy
 
-newActuator(raw_input('Enter Actuator Name: ')) # running per actuator, not participant
+actuatorName = raw_input('Enter Actuator Name: ')
+participantNumber = raw_input('Participant Number: ')
+newActuator(actuatorName, participantNumber)
 
+# running per actuator, not participants
 # add command args
 # -ls outputs all of the actuator names that we have on file
 # -r "actuator name" "id"
