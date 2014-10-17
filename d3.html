@@ -21,8 +21,8 @@
 			div.tooltip {	
 		    position: absolute;			
 		    text-align: center;			
-		    width: 100px;					
-		    height: 28px;					
+		    width: 50px;					
+		    height: 12px;					
 		    padding: 2px;				
 		    font: 9px sans-serif;		
 		    background: lightsteelblue;	
@@ -103,7 +103,7 @@
 			            div.transition()		
 			                .duration(200)		
 			                .style("opacity", .9);		
-			            div	.html("[" + xScale(d[0]) + ", "  + yScale(d[1]) + "]")	// tool tip message 
+			            div	.html("[" + d[0] + ", "  + d[1] + "]")	// tool tip message 
 			                .style("left", (d3.event.pageX) + "px")		
 			                .style("top", (d3.event.pageY - 28) + "px");	
 			            })					
