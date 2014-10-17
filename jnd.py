@@ -1,17 +1,4 @@
-import os, sys, time, datetime, json
-
-# def newParticipant(number):
-# 	if not os.path.exists('Participant' + number):
-# 		print('Creating new folder for Participant' + number + '...')
-#    		os.makedirs('Participant' + number) # make folder for participant
-
-# 		print('Creating text files...') # create files in participant folder
-# 		actuators = ['Potentiometer']
-# 		for item in actuators: #record values for each file
-# 			fileName = open(os.path.join('Participant' + number, item + '.csv'), 'w')
-# 			runExperiment(fileName, item)
-# 	else:
-# 		print('Participant folder already exists.')
+import os, sys, time, datetime, json, requests
 
 def newActuator(actuatorName, participantNumber):
 	if not os.path.exists(actuatorName):
@@ -41,7 +28,7 @@ def runExperiment(fileName, actuatorName, experimentName, participantNumber):
 	fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
 	fileName.write('\n Time: ' + str(timeElapsed) + ' s')
 
-def exportJson(path):
+def postJson(path):
 	f = open(path, 'r')
 	arr = []
 	headers = []
@@ -58,7 +45,8 @@ def exportJson(path):
 
 	jsonText = json.dumps(arr)
 
-	#return visualize(jsonText)
+	url = "http://localhost:8080"
+	r = requests.post(url, data=jsonText), headers=headers)
 
 #def visualize(jsonText):
 	#go into each participant folder and create a visualization for an experiment of an actuator
