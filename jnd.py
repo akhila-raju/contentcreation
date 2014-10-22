@@ -1,4 +1,6 @@
 import os, sys, time, datetime, json, requests
+from pylab import *
+from scipy.optimize import curve_fit
 
 def newActuator(actuatorName, participantNumber):
 	if not os.path.exists(actuatorName):
@@ -25,8 +27,12 @@ def runExperiment(fileName, actuatorName, experimentName, participantNumber):
 		# how do you know when the experiment has ended?
 	done = time.time()
 	timeElapsed = done - start
-	fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
-	fileName.write('\n Time: ' + str(timeElapsed) + ' s')
+	# data =
+	# fileName.write('\n End: ' + datetime.datetime.now().strftime("%d/%m/%Y %H:%M"))
+	# fileName.write('\n Time: ' + str(timeElapsed) + ' s')
+#remove csv
+
+# {StartTime: ,  , EndTime: }
 
 def postJson(path):
 	f = open(path, 'r')
@@ -45,14 +51,13 @@ def postJson(path):
 
 	jsonText = json.dumps(arr)
 
-	url = "http://localhost:8080"
+	url = "http://localhost:8080" #talk to Jasper about where to post, send Json text
 	r = requests.post(url, data=jsonText), headers=headers)
 
-#def visualize(jsonText):
+def visualize():
 	#go into each participant folder and create a visualization for an experiment of an actuator
-	# perform logistic regression
+	# perform exponential regression
 	# visualize by exporting json to D3
-	# look into vispy and psychopy
 
 actuatorName = raw_input('Enter Actuator Name: ')
 participantNumber = raw_input('Participant Number: ')
