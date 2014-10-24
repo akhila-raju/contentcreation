@@ -1,6 +1,4 @@
 import os, sys, time, datetime, json
-from pylab import *
-from scipy.optimize import curve_fit
 
 #Create specified actuator folder and specified participant folder
 def newActuator(actuatorName, participantNumber):
@@ -25,7 +23,7 @@ def runExperiment(actuatorName, participantNumber):
 	# data['xValues'] = 
 	# data['yValues'] = 
 	#buttonpresses
-	print data
+	json_data = json.dumps(data)
 
 #post json to URL
 #def postJson(json):
@@ -33,17 +31,16 @@ def runExperiment(actuatorName, participantNumber):
 	# r = requests.post(url, data=jsonText), headers=headers)
 
 # def actuatorVis():
-# 	visualization that plots data points of all participants
+# 	visualization that plots data points of all participants for an actuator
 
 # def participantVis():
-# 	visualize for a particular participant
+# 	visualize for a particular participant for an actuator
 
 
 actuatorName = raw_input('Enter Actuator Name: ')
 participantNumber = raw_input('Participant Number: ')
 runExperiment(actuatorName, participantNumber)
 
-# running per actuator, not participants
 # add command args
 # -ls outputs all of the actuator names that we have on file
 # -r "actuator name" "id"
