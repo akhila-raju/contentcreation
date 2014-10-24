@@ -15,7 +15,7 @@ def newActuator(actuatorName, participantNumber):
 	os.makedirs(participantFolder)
 	runExperiment(actuatorName, item)
 
-#Create JSON for specified actuator and specifie participant
+#Create JSON for specified actuator and specified participant
 def runExperiment(actuatorName, participantNumber):
 	print('Running ' + actuatorName + ' Experiment for Participant ' + participantNumber + ' ...')
 	data = {}
@@ -31,11 +31,6 @@ def runExperiment(actuatorName, participantNumber):
 #def postJson(json):
 	#url = "http://localhost:8080" #talk to Jasper about where to post, send Json text
 	# r = requests.post(url, data=jsonText), headers=headers)
-
-
-
-def regressionFunc(x, a, b, c, d):
-    return a*np.exp(-c*(x-b))+d
 
 # def actuatorVis():
 # 	visualization that plots data points of all participants
