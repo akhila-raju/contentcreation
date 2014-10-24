@@ -38,13 +38,10 @@ def regressionFunc(x, a, b, c, d):
     return a*np.exp(-c*(x-b))+d
 
 # def actuatorVis():
-# 	#visualization that plots data points of all participants
-# 	#plot 
-# 	# perform exponential regression
-# 	# visualize by exporting json to D3
+# 	visualization that plots data points of all participants
 
 # def participantVis():
-# 	#visualize for a particular participant
+# 	visualize for a particular participant
 
 
 actuatorName = raw_input('Enter Actuator Name: ')
