@@ -22,15 +22,16 @@ def runExperiment(actuatorName, participantNumber):
 	data['actuator'] = actuatorName
 	data['participant'] = participantNumber
 	data['startTime'] = str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M"))
-	data['x-values'] = 
-	data['y-values'] = #function
+	# data['xValues'] = 
+	# data['yValues'] = 
 	#buttonpresses
-	json_data = json.dumps(data)
+	print data
 
 #post json to URL
 #def postJson(json):
 	#url = "http://localhost:8080" #talk to Jasper about where to post, send Json text
 	# r = requests.post(url, data=jsonText), headers=headers)
+
 
 
 def regressionFunc(x, a, b, c, d):
@@ -48,7 +49,7 @@ def regressionFunc(x, a, b, c, d):
 
 actuatorName = raw_input('Enter Actuator Name: ')
 participantNumber = raw_input('Participant Number: ')
-newActuator(actuatorName, participantNumber)
+runExperiment(actuatorName, participantNumber)
 
 # running per actuator, not participants
 # add command args
